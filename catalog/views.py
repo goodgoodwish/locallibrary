@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views import generic
 from catalog.models import Book, Author, BookInstance, Genre
+
 
 def index(request):
     """View function for home page of site."""
@@ -32,3 +34,17 @@ def index(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, "index.html", context=context)
 
+class BookListView(generic.ListView):
+    model = Book
+    # queryset = Book.objects.filter(title__icontains='o')[:5]
+    paginate_by = 2
+
+class BookDetailView(generic.DetailView):
+    model = Book
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 2
+
+class AuthorDetailView(generic.DetailView):
+    model = Author
