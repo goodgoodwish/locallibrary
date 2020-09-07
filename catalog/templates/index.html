@@ -17,10 +17,7 @@
     <li><strong>Genre with o:</strong> {{ num_o_genres }}</li>
     <li><strong>Book with o:</strong> {{ num_o_books }}</li>
   </ul>
-  <h3>Book with o in title:</h3>
-  <ol>
-    {% for book in num_o_book_list %}
-    <li>{{book.title}}</li>
-    {% endfor %}
-  </ol>
+
+  <p>You have visited this page {{ num_visits }} {% if num_visits == 1 %} time {% else %} times{% endif %}. </p>
+
 {% endblock %}
